@@ -2,22 +2,36 @@ import './App.css'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Home from './Components/Home/Home/Home'
 import Navigation from './Components/Shared/Navigation/Navigation'
+import AuthProvider from './contexts/AuthProvider/AuthProvider'
+import AllProducts from './Components/AllProducts/AllProducts'
+import NotFound from './Components/NotFound/NotFound'
+import ViewProductDetails from './Components/ViewProductDetails/ViewProductDetails'
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Navigation />
-        <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/users"></Route>
-        </Switch>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Navigation />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/allProducts">
+              <AllProducts />
+            </Route>
+            <Route path="/viewProductDetails/:id">
+              <ViewProductDetails />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </Router>
+      </AuthProvider>
     </div>
   )
 }
