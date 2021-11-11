@@ -22,9 +22,10 @@ const OrderReview = () => {
   const [orders, setOrders] = useState([])
   const { AllContext } = useAuth()
   const { user } = AllContext
+  const email = user?.email
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myOrders`)
+    fetch(`http://localhost:5000/myOrders?email=${email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data))
   }, [])

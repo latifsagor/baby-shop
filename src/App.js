@@ -12,6 +12,7 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
 import OrderReview from './Components/OrderReview/OrderReview'
 import AddProduct from './Components/AddProduct/AddProduct'
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard'
+import useCart from './hooks/useCart/useCart'
 
 function App() {
   return (

@@ -8,9 +8,11 @@ import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { NavLink } from 'react-router-dom'
+import useCart from '../../hooks/useCart/useCart'
 
 const AllProducts = () => {
   const { products } = useAuth()
+  const handleAddToCart = useCart()
   return (
     <div>
       <Container sx={{ py: 5 }}>
@@ -21,8 +23,8 @@ const AllProducts = () => {
           Products
         </Typography>
         <Grid container spacing={2}>
-          {products.map((product) => (
-            <Grid item xs={12} md={4}>
+          {products.map((product, index) => (
+            <Grid key={product._id} item xs={12} md={4}>
               <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                   component="img"
@@ -48,7 +50,9 @@ const AllProducts = () => {
                   <NavLink to={`/viewProductDetails/${product?.id}`}>
                     <Button size="small">View Details</Button>
                   </NavLink>
-                  <Button size="small">Buy Now</Button>
+                  <Button onClick={() => handleAddToCart(index)} size="small">
+                    Buy Now
+                  </Button>
                 </CardActions>
               </Card>
             </Grid>

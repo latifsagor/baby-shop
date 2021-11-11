@@ -7,23 +7,25 @@ import Button from '@mui/material/Button'
 import { Link, NavLink } from 'react-router-dom'
 import useFirebase from '../../../hooks/useFirebase'
 import { textAlign } from '@mui/system'
+import useCart from '../../../hooks/useCart/useCart'
 
 const HomePageService = () => {
   const { products, AllContext } = useAuth()
   const { user } = AllContext
+  const handleAddToCart = useCart()
 
-  const handleAddToCart = (index) => {
-    const data = products[index]
-    data.email = user?.email
-    delete data._id
-    fetch('http://localhost:5000/addItem', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-  }
+  // const handleAddToCart = (index) => {
+  //   const data = products[index]
+  //   data.email = user?.email
+  //   delete data._id
+  //   fetch('http://localhost:5000/addItem', {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  // }
   return (
     <div>
       <Container sx={{ py: 3 }}>

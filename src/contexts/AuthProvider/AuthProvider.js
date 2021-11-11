@@ -1,4 +1,5 @@
 import React, { createContext } from 'react'
+import useCart from '../../hooks/useCart/useCart'
 import useFirebase from '../../hooks/useFirebase'
 import useProducts from '../../hooks/useProducts'
 
