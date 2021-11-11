@@ -28,8 +28,8 @@ const HomePageService = () => {
       <Container>
         <Grid container spacing="2">
           {products.slice(0, 6).map((product, index) => (
-            <Grid item xs={12} md={4}>
-              <Card sx={{ maxWidth: 345 }}>
+            <Grid key={product?._id} item xs={12} md={4}>
+              <Card sx={{ maxWidth: 345, marginBottom: '35px' }}>
                 <CardMedia
                   component="img"
                   height="140"

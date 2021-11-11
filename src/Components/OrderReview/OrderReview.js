@@ -9,9 +9,19 @@ import {
   Typography,
 } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import useAuth from '../../hooks/useAuth'
 
 const OrderReview = () => {
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
   const [orders, setOrders] = useState([])
+  const { AllContext } = useAuth()
+  const { user } = AllContext
 
   useEffect(() => {
     fetch(`http://localhost:5000/myOrders`)
@@ -40,13 +50,28 @@ const OrderReview = () => {
       })
   }
 
+  // Place information
+  const onSubmit = (data) => {
+    fetch(`http://localhost:5000/placeOrder`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+    reset()
+    console.log(data)
+  }
+
   return (
     <div>
       <Container sx={{ py: 5 }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             {orders.map((order) => (
-              <Card sx={{ mb: 3 }}>
+              <Card key={order._id} sx={{ mb: 3 }}>
                 <CardMedia
                   component="img"
                   height="140"
@@ -74,7 +99,56 @@ const OrderReview = () => {
               </Card>
             ))}
           </Grid>
-          <Grid item xs={12} md={6}></Grid>
+          <Grid item xs={12} md={6}>
+            <form className="shipping-form" onSubmit={handleSubmit(onSubmit)}>
+              <input
+                defaultValue={user?.displayName}
+                {...register('name')}
+                className="my-2 p-2 w-50"
+              />{' '}
+              <br />
+              <input
+                defaultValue={user?.email}
+                {...register('email', { required: true })}
+                className="my-2 p-2 w-50"
+              />{' '}
+              <br />
+              {errors?.email && (
+                <span className="error">This field is required</span>
+              )}
+              <input
+                placeholder="Address"
+                defaultValue=""
+                className="my-2 p-2 w-50"
+                {...register('address')}
+              />{' '}
+              <br />
+              <input
+                placeholder="City"
+                className="my-2 p-2 w-50"
+                defaultValue=""
+                {...register('city')}
+              />{' '}
+              <br />
+              <input
+                placeholder="Phone number"
+                defaultValue=""
+                className="my-2 p-2 w-50"
+                {...register('phone')}
+              />{' '}
+              <br />
+              {/* <input
+              className="my-2 p-2 w-50 btn btn-outline-danger"
+              type="submit"
+            /> */}
+              <button
+                type="submit"
+                className="my-2 p-2 w-50 btn btn-outline-danger"
+              >
+                Place Order
+              </button>
+            </form>
+          </Grid>
         </Grid>
       </Container>
     </div>
