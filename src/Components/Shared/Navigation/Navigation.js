@@ -8,10 +8,11 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import { Link, NavLink } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
-import useFirebase from '../../../hooks/useFirebase'
 
 const Navigation = () => {
-  const { user, logOut } = useFirebase()
+  const { AllContext } = useAuth()
+  const { user, logOut } = AllContext
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">

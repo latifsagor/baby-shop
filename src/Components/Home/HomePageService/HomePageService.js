@@ -8,8 +8,8 @@ import { Link, NavLink } from 'react-router-dom'
 import useFirebase from '../../../hooks/useFirebase'
 
 const HomePageService = () => {
-  const { products } = useAuth()
-  const { user } = useFirebase()
+  const { products, AllContext } = useAuth()
+  const { user } = AllContext
 
   const handleAddToCart = (index) => {
     const data = products[index]

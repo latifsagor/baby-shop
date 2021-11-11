@@ -18,6 +18,28 @@ const OrderReview = () => {
       .then((res) => res.json())
       .then((data) => setOrders(data))
   }, [])
+
+  // Handle Delete
+  const handleDelete = (id) => {
+    console.log(id)
+    fetch(`http://localhost:5000/orders/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          alert('Deleted Successfully')
+          const remaining = orders.filter((order) => order._id !== id)
+          setOrders(remaining)
+        } else {
+          alert('not deleted')
+        }
+      })
+  }
+
   return (
     <div>
       <Container sx={{ py: 5 }}>
@@ -41,7 +63,11 @@ const OrderReview = () => {
                   <Typography variant="h6">Price: {order.price}</Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small" variant="contained">
+                  <Button
+                    onClick={() => handleDelete(order?._id)}
+                    size="small"
+                    variant="contained"
+                  >
                     Delete
                   </Button>
                 </CardActions>

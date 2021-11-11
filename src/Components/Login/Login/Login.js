@@ -8,12 +8,15 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 import { NavLink, useLocation, useHistory } from 'react-router-dom'
-import useFirebase from '../../../hooks/useFirebase'
+import useAuth from '../../../hooks/useAuth'
 
 const Login = () => {
   const [loginData, setLoginData] = useState({})
-  const { user, logInUser, isLoading, authError, signInWithGoogle } =
-    useFirebase()
+  const { AllContext } = useAuth()
+
+  const { user, logInUser, isLoading, authError, signInWithGoogle } = AllContext
+
+  // user, logInUser, isLoading, authError, signInWithGoogle
 
   const location = useLocation()
   const history = useHistory()

@@ -9,11 +9,13 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import useFirebase from '../../../hooks/useFirebase'
+import useAuth from '../../../hooks/useAuth'
 
 const Register = () => {
   const [loginData, setLoginData] = useState({})
-  const { isLoading, registerUser, user, authError } = useFirebase()
+
+  const { AllContext } = useAuth()
+  const { isLoading, registerUser, user, authError } = AllContext
 
   const handleLoginSubmit = (e) => {
     e?.preventDefault()
