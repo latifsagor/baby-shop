@@ -8,6 +8,8 @@ import NotFound from './Components/NotFound/NotFound'
 import ViewProductDetails from './Components/ViewProductDetails/ViewProductDetails'
 import Login from './Components/Login/Login/Login'
 import Register from './Components/Login/Register/Register'
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
+import OrderReview from './Components/OrderReview/OrderReview'
 
 function App() {
   return (
@@ -22,11 +24,14 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/allProducts">
+            <PrivateRoute path="/allProducts">
               <AllProducts />
-            </Route>
+            </PrivateRoute>
             <Route path="/viewProductDetails/:id">
               <ViewProductDetails />
+            </Route>
+            <Route path="/orderReview">
+              <OrderReview />
             </Route>
             <Route path="/login">
               <Login />

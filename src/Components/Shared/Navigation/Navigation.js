@@ -25,10 +25,19 @@ const Navigation = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            as={Link}
+            to="/home"
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, textDecoration: 'none', color: '#fff' }}
+          >
             Baby Shop
           </Typography>
-          <Link to="/allProducts">All Products</Link>
+          <Link style={{ marginRight: '15px' }} to="/allProducts">
+            All Products
+          </Link>
+          <Link to="/orderReview">Order Review</Link>
           {user?.email ? (
             <Button onClick={logOut} color="inherit">
               Logout

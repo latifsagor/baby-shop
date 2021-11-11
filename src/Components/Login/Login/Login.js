@@ -1,15 +1,26 @@
-import { Alert, Button, Container, Grid, TextField } from '@mui/material'
+import {
+  Alert,
+  Button,
+  CircularProgress,
+  Container,
+  Grid,
+  TextField,
+} from '@mui/material'
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useHistory } from 'react-router-dom'
 import useFirebase from '../../../hooks/useFirebase'
 
 const Login = () => {
   const [loginData, setLoginData] = useState({})
-  const { user, logInUser, isLoading, authError } = useFirebase()
+  const { user, logInUser, isLoading, authError, signInWithGoogle } =
+    useFirebase()
+
+  const location = useLocation()
+  const history = useHistory()
 
   const handleLoginSubmit = (e) => {
     e.preventDefault()
-    logInUser(loginData?.email, loginData?.password)
+    logInUser(loginData?.email, loginData?.password, location, history)
   }
 
   const handleOnChange = (e) => {
@@ -18,6 +29,10 @@ const Login = () => {
     const newLoginData = { ...loginData }
     newLoginData[field] = value
     setLoginData(newLoginData)
+  }
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(location, history)
   }
   return (
     <Container>
@@ -52,7 +67,18 @@ const Login = () => {
             <NavLink to="/register">
               <Button variant="text">New User? Please Register</Button>
             </NavLink>
+            {isLoading && <CircularProgress color="secondary" />}
           </form>
+          <p>
+            -------------------------------or, -------------------------------
+          </p>
+          <Button
+            style={{ width: '75%', marginBottom: '15px' }}
+            variant="contained"
+            onClick={handleGoogleSignIn}
+          >
+            Google Sign In
+          </Button>
           {user?.email && <Alert severity="success">Login Successfully!</Alert>}
           {user?.authError && <Alert severity="error">{authError}</Alert>}
         </Grid>

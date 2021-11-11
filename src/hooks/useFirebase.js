@@ -22,11 +22,12 @@ const useFirebase = () => {
   const [token, setToken] = useState('')
 
   // REGISTER NEW USER
-  const registerUser = (email, password) => {
+  const registerUser = (email, password, history) => {
     setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         setAuthError('')
+        // history.push('/')
       })
       .catch((error) => {
         setAuthError(error.message)
@@ -35,16 +36,40 @@ const useFirebase = () => {
   }
 
   // SIGN IN USER
-  const logInUser = (email, password) => {
+  const logInUser = (email, password, location, history) => {
     setIsLoading(true)
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
+        const destination = location?.state?.from || '/'
+        history?.replace(destination)
         setAuthError('')
       })
       .catch((error) => {
         setAuthError(error.message)
       })
       .finally(() => setIsLoading(false))
+  }
+
+  // GOOGLE SIGN IN
+  const signInWithGoogle = (location, history) => {
+    setIsLoading(true)
+    const googleProvider = new GoogleAuthProvider()
+
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user
+
+        // saveUser(user.email, user.displayName, 'PUT')
+
+        setUser(user)
+        const destination = location?.state?.from || '/'
+        history.replace(destination)
+        setAuthError('')
+      })
+      .catch((error) => {
+        setAuthError(error.message)
+      })
+      .finally(setIsLoading(false))
   }
 
   // Observed
@@ -80,6 +105,7 @@ const useFirebase = () => {
     authError,
     logOut,
     registerUser,
+    signInWithGoogle,
   }
 }
 

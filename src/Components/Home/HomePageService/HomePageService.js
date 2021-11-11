@@ -5,13 +5,15 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import { Link, NavLink } from 'react-router-dom'
+import useFirebase from '../../../hooks/useFirebase'
 
 const HomePageService = () => {
   const { products } = useAuth()
+  const { user } = useFirebase()
 
   const handleAddToCart = (index) => {
     const data = products[index]
-    // data.email = user?.email
+    data.email = user?.email
     delete data._id
     fetch('http://localhost:5000/addItem', {
       method: 'POST',
