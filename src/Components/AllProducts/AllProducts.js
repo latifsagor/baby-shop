@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import { NavLink } from 'react-router-dom'
 
 const AllProducts = () => {
   const { products } = useAuth()
@@ -38,7 +39,9 @@ const AllProducts = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small">View Details</Button>
+                  <NavLink to={`/viewProductDetails/${product?.id}`}>
+                    <Button size="small">View Details</Button>
+                  </NavLink>
                   <Button size="small">Buy Now</Button>
                 </CardActions>
               </Card>

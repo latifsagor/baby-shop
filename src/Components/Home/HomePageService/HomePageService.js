@@ -8,11 +8,24 @@ import { Link, NavLink } from 'react-router-dom'
 
 const HomePageService = () => {
   const { products } = useAuth()
+
+  const handleAddToCart = (index) => {
+    const data = products[index]
+    // data.email = user?.email
+    delete data._id
+    fetch('http://localhost:5000/addItem', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+  }
   return (
     <div>
       <Container>
         <Grid container spacing="2">
-          {products.slice(0, 6).map((product) => (
+          {products.slice(0, 6).map((product, index) => (
             <Grid item xs={12} md={4}>
               <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
@@ -39,7 +52,9 @@ const HomePageService = () => {
                   <NavLink to={`/viewProductDetails/${product?.id}`}>
                     <Button size="small">View Details</Button>
                   </NavLink>
-                  <Button size="small">Buy Now</Button>
+                  <Button onClick={() => handleAddToCart(index)} size="small">
+                    Buy Now
+                  </Button>
                 </CardActions>
               </Card>
             </Grid>

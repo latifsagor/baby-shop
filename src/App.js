@@ -6,6 +6,8 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider'
 import AllProducts from './Components/AllProducts/AllProducts'
 import NotFound from './Components/NotFound/NotFound'
 import ViewProductDetails from './Components/ViewProductDetails/ViewProductDetails'
+import Login from './Components/Login/Login/Login'
+import Register from './Components/Login/Register/Register'
 
 function App() {
   return (
@@ -25,6 +27,12 @@ function App() {
             </Route>
             <Route path="/viewProductDetails/:id">
               <ViewProductDetails />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
             </Route>
             <Route path="*">
               <NotFound />

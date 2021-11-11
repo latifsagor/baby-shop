@@ -6,9 +6,12 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import useAuth from '../../../hooks/useAuth'
+import useFirebase from '../../../hooks/useFirebase'
 
 const Navigation = () => {
+  const { user, logOut } = useFirebase()
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -26,7 +29,15 @@ const Navigation = () => {
             Baby Shop
           </Typography>
           <Link to="/allProducts">All Products</Link>
-          <Button color="inherit">Login</Button>
+          {user?.email ? (
+            <Button onClick={logOut} color="inherit">
+              Logout
+            </Button>
+          ) : (
+            <NavLink to="/login">
+              <Button color="inherit">Login</Button>
+            </NavLink>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
