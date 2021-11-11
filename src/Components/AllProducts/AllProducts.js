@@ -14,6 +14,12 @@ const AllProducts = () => {
   return (
     <div>
       <Container sx={{ py: 5 }}>
+        <Typography
+          variant="h2"
+          sx={{ fontWeight: 500, fontSize: '35px', mb: 3, textAlign: 'center' }}
+        >
+          Products
+        </Typography>
         <Grid container spacing={2}>
           {products.map((product) => (
             <Grid item xs={12} md={4}>

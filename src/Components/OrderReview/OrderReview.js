@@ -60,9 +60,12 @@ const OrderReview = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (data.insertedId) {
+          alert('Successfully Order')
+        }
+      })
     reset()
-    console.log(data)
   }
 
   return (
@@ -103,29 +106,29 @@ const OrderReview = () => {
             <form className="shipping-form" onSubmit={handleSubmit(onSubmit)}>
               <input
                 defaultValue={user?.displayName}
-                {...register('name')}
-                className="my-2 p-2 w-50"
+                {...register('customerName')}
+                style={{ width: '75%', padding: '15px', marginBottom: '12px' }}
               />{' '}
               <br />
               <input
                 defaultValue={user?.email}
                 {...register('email', { required: true })}
-                className="my-2 p-2 w-50"
+                style={{ width: '75%', padding: '15px', marginBottom: '12px' }}
               />{' '}
               <br />
-              {errors?.email && (
+              {/* {errors?.email && (
                 <span className="error">This field is required</span>
-              )}
+              )} */}
               <input
                 placeholder="Address"
                 defaultValue=""
-                className="my-2 p-2 w-50"
+                style={{ width: '75%', padding: '15px', marginBottom: '12px' }}
                 {...register('address')}
               />{' '}
               <br />
               <input
                 placeholder="City"
-                className="my-2 p-2 w-50"
+                style={{ width: '75%', padding: '15px', marginBottom: '12px' }}
                 defaultValue=""
                 {...register('city')}
               />{' '}
@@ -133,7 +136,7 @@ const OrderReview = () => {
               <input
                 placeholder="Phone number"
                 defaultValue=""
-                className="my-2 p-2 w-50"
+                style={{ width: '75%', padding: '15px', marginBottom: '12px' }}
                 {...register('phone')}
               />{' '}
               <br />
@@ -141,12 +144,9 @@ const OrderReview = () => {
               className="my-2 p-2 w-50 btn btn-outline-danger"
               type="submit"
             /> */}
-              <button
-                type="submit"
-                className="my-2 p-2 w-50 btn btn-outline-danger"
-              >
+              <Button variant="contained" type="submit">
                 Place Order
-              </button>
+              </Button>
             </form>
           </Grid>
         </Grid>

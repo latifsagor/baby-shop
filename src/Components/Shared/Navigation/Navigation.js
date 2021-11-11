@@ -35,10 +35,46 @@ const Navigation = () => {
           >
             Baby Shop
           </Typography>
-          <Link style={{ marginRight: '15px' }} to="/allProducts">
+          <Link
+            style={{
+              marginRight: '15px',
+              textDecoration: 'none',
+              color: '#fff',
+            }}
+            to="/allProducts"
+          >
             All Products
           </Link>
-          <Link to="/orderReview">Order Review</Link>
+          <Link
+            style={{
+              marginRight: '15px',
+              textDecoration: 'none',
+              color: '#fff',
+            }}
+            to="/orderReview"
+          >
+            Order Review
+          </Link>
+          <Link
+            style={{
+              marginRight: '15px',
+              textDecoration: 'none',
+              color: '#fff',
+            }}
+            to="/addProduct"
+          >
+            Add New Product
+          </Link>
+          <Link
+            style={{
+              marginRight: '15px',
+              textDecoration: 'none',
+              color: '#fff',
+            }}
+            to="/dashboard"
+          >
+            Dashboard
+          </Link>
           {user?.email ? (
             <Button onClick={logOut} color="inherit">
               Logout

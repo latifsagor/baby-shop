@@ -1,10 +1,10 @@
 const firebaseConfig = {
-  apiKey: 'AIzaSyD7DXZ7OPFYi-YeKcB3Elh3Z3Th-6l2Jds',
-  authDomain: 'baby-shop-4f049.firebaseapp.com',
-  projectId: 'baby-shop-4f049',
-  storageBucket: 'baby-shop-4f049.appspot.com',
-  messagingSenderId: '581572857709',
-  appId: '1:581572857709:web:b235a4da401d6a11599464',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 }
 
 export default firebaseConfig

@@ -22,12 +22,21 @@ const useFirebase = () => {
   const [token, setToken] = useState('')
 
   // REGISTER NEW USER
-  const registerUser = (email, password, history) => {
+  const registerUser = (email, password, name, history) => {
     setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         setAuthError('')
-        // history.push('/')
+        const newUser = { email, displayName: name }
+        setUser(newUser)
+
+        // Name to send to firebase
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {})
+          .catch(() => {})
+        history?.replace('/')
       })
       .catch((error) => {
         setAuthError(error.message)

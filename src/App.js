@@ -11,6 +11,7 @@ import Register from './Components/Login/Register/Register'
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
 import OrderReview from './Components/OrderReview/OrderReview'
 import AddProduct from './Components/AddProduct/AddProduct'
+import Dashboard from './Components/Dashboard/Dashboard/Dashboard'
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
             <Route path="/addProduct">
               <AddProduct />
             </Route>
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
+            </PrivateRoute>
             <Route path="/login">
               <Login />
             </Route>

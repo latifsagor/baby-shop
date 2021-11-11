@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import { Link, NavLink } from 'react-router-dom'
 import useFirebase from '../../../hooks/useFirebase'
+import { textAlign } from '@mui/system'
 
 const HomePageService = () => {
   const { products, AllContext } = useAuth()
@@ -25,7 +26,13 @@ const HomePageService = () => {
   }
   return (
     <div>
-      <Container>
+      <Container sx={{ py: 3 }}>
+        <Typography
+          variant="h2"
+          sx={{ my: 3, fontWeight: 500, fontSize: 35, textAlign: 'center' }}
+        >
+          Products
+        </Typography>
         <Grid container spacing="2">
           {products.slice(0, 6).map((product, index) => (
             <Grid key={product?._id} item xs={12} md={4}>
@@ -62,6 +69,9 @@ const HomePageService = () => {
             </Grid>
           ))}
         </Grid>
+        <Link to="/allProducts" style={{ textDecoration: 'none' }}>
+          <Button variant="contained">All Products</Button>
+        </Link>
       </Container>
     </div>
   )
