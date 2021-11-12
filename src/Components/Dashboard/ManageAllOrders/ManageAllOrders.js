@@ -15,7 +15,9 @@ const ManageAllOrders = () => {
   const [manageOrders, setManageOrders] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/manageOrders?email=${user.email}`)
+    fetch(
+      `https://infinite-coast-95375.herokuapp.com/manageOrders?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setManageOrders(data))
   }, [])

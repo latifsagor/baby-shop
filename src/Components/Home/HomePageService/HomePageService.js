@@ -18,7 +18,7 @@ const HomePageService = () => {
   //   const data = products[index]
   //   data.email = user?.email
   //   delete data._id
-  //   fetch('http://localhost:5000/addItem', {
+  //   fetch('https://infinite-coast-95375.herokuapp.com/addItem', {
   //     method: 'POST',
   //     headers: {
   //       'content-type': 'application/json',

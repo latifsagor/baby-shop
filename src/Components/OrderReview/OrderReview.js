@@ -25,7 +25,7 @@ const OrderReview = () => {
   const email = user?.email
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myOrders?email=${email}`)
+    fetch(`https://infinite-coast-95375.herokuapp.com/myOrders?email=${email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data))
   }, [])
@@ -33,7 +33,7 @@ const OrderReview = () => {
   // Handle Delete
   const handleDelete = (id) => {
     console.log(id)
-    fetch(`http://localhost:5000/orders/${id}`, {
+    fetch(`https://infinite-coast-95375.herokuapp.com/orders/${id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
@@ -53,7 +53,7 @@ const OrderReview = () => {
 
   // Place information
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/placeOrder`, {
+    fetch(`https://infinite-coast-95375.herokuapp.com/placeOrder`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
