@@ -43,7 +43,7 @@ const Navigation = () => {
             }}
             to="/allProducts"
           >
-            All Products
+            Shop
           </Link>
           <Link
             style={{
@@ -65,16 +65,18 @@ const Navigation = () => {
           >
             Add New Product
           </Link>
-          <Link
-            style={{
-              marginRight: '15px',
-              textDecoration: 'none',
-              color: '#fff',
-            }}
-            to="/dashboard"
-          >
-            Dashboard
-          </Link>
+          {user?.email && (
+            <Link
+              style={{
+                marginRight: '15px',
+                textDecoration: 'none',
+                color: '#fff',
+              }}
+              to="/dashboard"
+            >
+              Dashboard
+            </Link>
+          )}
           {user?.email ? (
             <Button onClick={logOut} color="inherit">
               Logout

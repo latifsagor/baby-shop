@@ -37,7 +37,6 @@ const Register = () => {
     const newLoginData = { ...loginData }
     newLoginData[field] = value
     setLoginData(newLoginData)
-    console.log(newLoginData)
   }
 
   return (

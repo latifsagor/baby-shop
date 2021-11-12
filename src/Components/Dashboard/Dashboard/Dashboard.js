@@ -16,12 +16,27 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import ManageAllOrders from '../ManageAllOrders/ManageAllOrders'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch,
+} from 'react-router-dom'
+import { Button } from '@mui/material'
+import MakeAdmin from '../MakeAdmin/MakeAdmin'
+import useAuth from '../../../hooks/useAuth'
+import AdminRoute from '../../Login/AdminRoute/AdminRoute'
 
 const drawerWidth = 240
 
 function Dashboard(props) {
   const { window } = props
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  let { path, url } = useRouteMatch()
+  const { AllContext } = useAuth()
+  const { admin } = AllContext
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -31,6 +46,19 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
+      <Link to={`${url}`} style={{ textDecoration: 'none' }}>
+        <Button color="inherit">ManageAllOrders</Button>
+      </Link>
+      {admin && (
+        <Box>
+          <Link to={`${url}/makeAdmin`} style={{ textDecoration: 'none' }}>
+            <Button color="inherit">Make an Admin</Button>
+          </Link>
+          <Link to={`${url}`} style={{ textDecoration: 'none' }}>
+            <Button color="inherit">Appointment</Button>
+          </Link>
+        </Box>
+      )}
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -120,10 +148,14 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          {' '}
-          <ManageAllOrders />{' '}
-        </Typography>
+        <Switch>
+          <Route exact path={path}>
+            <ManageAllOrders />
+          </Route>
+          <AdminRoute path={`${path}/makeAdmin`}>
+            <MakeAdmin />
+          </AdminRoute>
+        </Switch>
       </Box>
     </Box>
   )

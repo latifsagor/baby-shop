@@ -1,4 +1,4 @@
-import { CircularProgress } from '@mui/material'
+import { Button, CircularProgress } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import useAuth from '../../../hooks/useAuth'
 import Table from '@mui/material/Table'
@@ -34,6 +34,8 @@ const ManageAllOrders = () => {
               <TableCell align="right">Phone</TableCell>
               <TableCell align="right">Address</TableCell>
               <TableCell align="right">City</TableCell>
+              <TableCell align="right">Status</TableCell>
+              <TableCell align="right">Cancel Item</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -49,6 +51,12 @@ const ManageAllOrders = () => {
                 <TableCell align="right">{manageOrder.phone}</TableCell>
                 <TableCell align="right">{manageOrder.address}</TableCell>
                 <TableCell align="right">{manageOrder.city}</TableCell>
+                <TableCell align="right">
+                  <Button variant="contained">Pending</Button>
+                </TableCell>
+                <TableCell align="right">
+                  <Button variant="contained">Remove</Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

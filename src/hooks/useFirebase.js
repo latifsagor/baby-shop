@@ -30,6 +30,9 @@ const useFirebase = () => {
         const newUser = { email, displayName: name }
         setUser(newUser)
 
+        // Save User to the Database
+        savedUser(email, name, 'POST')
+
         // Name to send to firebase
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -68,7 +71,7 @@ const useFirebase = () => {
       .then((result) => {
         const user = result.user
 
-        // saveUser(user.email, user.displayName, 'PUT')
+        savedUser(user.email, user.displayName, 'PUT')
 
         setUser(user)
         const destination = location?.state?.from || '/'
@@ -107,6 +110,26 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false))
   }
 
+  const savedUser = (email, displayName, method) => {
+    const user = { email, displayName }
+    fetch('http://localhost:5000/users', {
+      method: method,
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+  }
+
+  // Admin
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data?.admin))
+  }, [user?.email])
+
   return {
     user,
     logInUser,
@@ -115,6 +138,7 @@ const useFirebase = () => {
     logOut,
     registerUser,
     signInWithGoogle,
+    admin,
   }
 }
 

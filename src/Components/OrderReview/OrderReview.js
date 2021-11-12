@@ -4,6 +4,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  CircularProgress,
   Container,
   Grid,
   Typography,
@@ -21,7 +22,7 @@ const OrderReview = () => {
   } = useForm()
   const [orders, setOrders] = useState([])
   const { AllContext } = useAuth()
-  const { user } = AllContext
+  const { user, isLoading } = AllContext
   const email = user?.email
 
   useEffect(() => {
@@ -67,6 +68,10 @@ const OrderReview = () => {
         }
       })
     reset()
+  }
+
+  if (isLoading) {
+    return <CircularProgress />
   }
 
   return (

@@ -42,6 +42,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
+            <Route path="/manageAllOrders">
+              <AddProduct />
+            </Route>
             <Route path="/login">
               <Login />
             </Route>
