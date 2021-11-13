@@ -17,8 +17,6 @@ const Login = () => {
 
   const { user, logInUser, isLoading, authError, signInWithGoogle } = AllContext
 
-  // user, logInUser, isLoading, authError, signInWithGoogle
-
   const location = useLocation()
   const history = useHistory()
 
