@@ -24,7 +24,7 @@ const OrderReview = () => {
     fetch(`https://infinite-coast-95375.herokuapp.com/myOrders?email=${email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data))
-  }, [])
+  }, [email])
 
   // Handle Delete
   const handleDelete = (id) => {

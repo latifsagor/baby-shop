@@ -1,6 +1,5 @@
 import {
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   Container,
@@ -15,7 +14,7 @@ const ReviewPage = () => {
     fetch('https://infinite-coast-95375.herokuapp.com/reviewsInfo')
       .then((res) => res.json())
       .then((data) => setReviewsInfo(data))
-  }, {})
+  }, [])
   return (
     <div>
       <Container sx={{ py: 5 }}>
@@ -30,11 +29,11 @@ const ReviewPage = () => {
             <Grid item xs={12} md={4}>
               <Card
                 key={order._id}
-                sx={{ mb: 3 }}
                 sx={{
                   maxWidth: 345,
                   marginBottom: '35px',
                   textAlign: 'center',
+                  mb: 3,
                 }}
               >
                 <CardContent>

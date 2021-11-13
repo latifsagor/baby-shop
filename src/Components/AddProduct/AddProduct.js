@@ -7,7 +7,6 @@ const AddProduct = () => {
     register,
     reset,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm()
 

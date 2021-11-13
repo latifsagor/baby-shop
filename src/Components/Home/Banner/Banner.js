@@ -6,7 +6,7 @@ import yamahaYZF from '../../../Images/baby.png'
 const Banner = () => {
   return (
     <div className="banner-bg">
-      <Container sx={{ py: 3 }}>
+      <Container sx={{ py: 5 }}>
         <Grid container spacing={2}>
           <Grid
             item

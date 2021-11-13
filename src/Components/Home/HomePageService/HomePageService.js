@@ -5,13 +5,10 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import { Link, NavLink } from 'react-router-dom'
-import useFirebase from '../../../hooks/useFirebase'
-import { textAlign } from '@mui/system'
 import useCart from '../../../hooks/useCart/useCart'
 
 const HomePageService = () => {
-  const { products, AllContext } = useAuth()
-  const { user } = AllContext
+  const { products } = useAuth()
   const handleAddToCart = useCart()
 
   // const handleAddToCart = (index) => {

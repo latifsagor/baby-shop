@@ -16,11 +16,11 @@ const ManageAllOrders = () => {
 
   useEffect(() => {
     fetch(
-      `https://infinite-coast-95375.herokuapp.com/manageOrders?email=${user.email}`
+      `https://infinite-coast-95375.herokuapp.com/manageOrders?email=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setManageOrders(data))
-  }, [])
+  }, [user?.email])
 
   const handleAddToDelete = (id) => {
     // console.log(id)
