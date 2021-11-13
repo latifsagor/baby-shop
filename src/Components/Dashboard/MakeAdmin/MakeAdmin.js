@@ -12,7 +12,7 @@ const MakeAdmin = () => {
 
   const handleOnSubmit = (e) => {
     const user = { email }
-    fetch('http://localhost:5000/users/admin', {
+    fetch('https://infinite-coast-95375.herokuapp.com/users/admin', {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -52,13 +52,9 @@ const MakeAdmin = () => {
               Submit
             </Button>
           </form>
-          {success ? (
+          {success && (
             <Alert sx={{ my: 1, width: '75%' }} severity="success">
               Made admin successfully!
-            </Alert>
-          ) : (
-            <Alert sx={{ my: 1, width: '75%' }} severity="info">
-              Already You Are Admin
             </Alert>
           )}
         </Grid>

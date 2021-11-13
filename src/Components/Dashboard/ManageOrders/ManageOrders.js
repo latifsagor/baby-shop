@@ -1,4 +1,3 @@
-import { Button, CircularProgress } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import useAuth from '../../../hooks/useAuth'
 import Table from '@mui/material/Table'
@@ -8,20 +7,20 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import { Button, CircularProgress } from '@mui/material'
 
-const ManageAllOrders = () => {
+const ManageOrders = () => {
   const { AllContext } = useAuth()
-  const { user, isLoading } = AllContext
+  const { isLoading } = AllContext
   const [manageOrders, setManageOrders] = useState([])
 
   useEffect(() => {
-    fetch(
-      `https://infinite-coast-95375.herokuapp.com/manageOrders?email=${user.email}`
-    )
+    fetch('https://infinite-coast-95375.herokuapp.com/manageAllOrdersUser')
       .then((res) => res.json())
       .then((data) => setManageOrders(data))
   }, [])
 
+  // Delete by Admin
   const handleAddToDelete = (id) => {
     // console.log(id)
     fetch(`https://infinite-coast-95375.herokuapp.com/customerInfo/${id}`, {
@@ -46,7 +45,7 @@ const ManageAllOrders = () => {
   return (
     <div>
       <p>{isLoading && <CircularProgress color="secondary" />}</p>
-      <h2>Totals: {manageOrders.length}</h2>
+      <h2>Manage Orders: {manageOrders.length}</h2>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="Manage All Orders table">
           <TableHead>
@@ -93,4 +92,4 @@ const ManageAllOrders = () => {
   )
 }
 
-export default ManageAllOrders
+export default ManageOrders

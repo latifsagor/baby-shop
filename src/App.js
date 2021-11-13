@@ -12,7 +12,7 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
 import OrderReview from './Components/OrderReview/OrderReview'
 import AddProduct from './Components/AddProduct/AddProduct'
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard'
-import useCart from './hooks/useCart/useCart'
+import Footer from './Components/Shared/Footer/Footer'
 
 function App() {
   return (
@@ -27,17 +27,14 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <PrivateRoute path="/allProducts">
+            <Route path="/allProducts">
               <AllProducts />
-            </PrivateRoute>
+            </Route>
             <Route path="/viewProductDetails/:id">
               <ViewProductDetails />
             </Route>
             <Route path="/orderReview">
               <OrderReview />
-            </Route>
-            <Route path="/addProduct">
-              <AddProduct />
             </Route>
             <PrivateRoute path="/dashboard">
               <Dashboard />
@@ -55,6 +52,7 @@ function App() {
               <NotFound />
             </Route>
           </Switch>
+          <Footer />
         </Router>
       </AuthProvider>
     </div>

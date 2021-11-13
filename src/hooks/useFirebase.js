@@ -9,7 +9,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   updateProfile,
-  getIdToken,
 } from 'firebase/auth'
 
 firebaseInitialization()
@@ -19,7 +18,6 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [authError, setAuthError] = useState('')
   const [admin, setAdmin] = useState(false)
-  const [token, setToken] = useState('')
 
   // REGISTER NEW USER
   const registerUser = (email, password, name, history) => {
@@ -112,7 +110,7 @@ const useFirebase = () => {
 
   const savedUser = (email, displayName, method) => {
     const user = { email, displayName }
-    fetch('http://localhost:5000/users', {
+    fetch('https://infinite-coast-95375.herokuapp.com/users', {
       method: method,
       headers: {
         'content-type': 'application/json',
@@ -125,7 +123,7 @@ const useFirebase = () => {
 
   // Admin
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://infinite-coast-95375.herokuapp.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data?.admin))
   }, [user?.email])

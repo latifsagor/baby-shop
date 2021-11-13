@@ -40,10 +40,12 @@ const Register = () => {
   }
 
   return (
-    <Container>
+    <Container sx={{ pt: 5 }}>
       <Grid container spacing={2}>
         <Grid item>
-          <Typography variant="h5">Register</Typography>
+          <Typography variant="h5" sx={{ fontWeight: '700' }}>
+            Please Register
+          </Typography>
           {!isLoading && (
             <form onSubmit={handleLoginSubmit}>
               <TextField

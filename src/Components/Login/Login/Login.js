@@ -5,6 +5,7 @@ import {
   Container,
   Grid,
   TextField,
+  Typography,
 } from '@mui/material'
 import React, { useState } from 'react'
 import { NavLink, useLocation, useHistory } from 'react-router-dom'
@@ -38,9 +39,12 @@ const Login = () => {
     signInWithGoogle(location, history)
   }
   return (
-    <Container>
+    <Container sx={{ pt: 5 }}>
       <Grid container spacing={2}>
         <Grid item>
+          <Typography variant="h5" sx={{ fontWeight: '700' }}>
+            Please Login
+          </Typography>
           <form onSubmit={handleLoginSubmit}>
             <TextField
               id="standard-basic"

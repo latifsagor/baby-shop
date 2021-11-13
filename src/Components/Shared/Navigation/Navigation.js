@@ -45,26 +45,18 @@ const Navigation = () => {
           >
             Shop
           </Link>
-          <Link
-            style={{
-              marginRight: '15px',
-              textDecoration: 'none',
-              color: '#fff',
-            }}
-            to="/orderReview"
-          >
-            Order Review
-          </Link>
-          <Link
-            style={{
-              marginRight: '15px',
-              textDecoration: 'none',
-              color: '#fff',
-            }}
-            to="/addProduct"
-          >
-            Add New Product
-          </Link>
+          {user?.email && (
+            <Link
+              style={{
+                marginRight: '15px',
+                textDecoration: 'none',
+                color: '#fff',
+              }}
+              to="/orderReview"
+            >
+              Order Review
+            </Link>
+          )}
           {user?.email && (
             <Link
               style={{
@@ -82,7 +74,10 @@ const Navigation = () => {
               Logout
             </Button>
           ) : (
-            <NavLink to="/login">
+            <NavLink
+              to="/login"
+              style={{ textDecoration: 'none', color: '#fff' }}
+            >
               <Button color="inherit">Login</Button>
             </NavLink>
           )}

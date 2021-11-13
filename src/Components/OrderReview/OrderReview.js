@@ -14,12 +14,7 @@ import { useForm } from 'react-hook-form'
 import useAuth from '../../hooks/useAuth'
 
 const OrderReview = () => {
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const { register, reset, handleSubmit } = useForm()
   const [orders, setOrders] = useState([])
   const { AllContext } = useAuth()
   const { user, isLoading } = AllContext
@@ -33,7 +28,6 @@ const OrderReview = () => {
 
   // Handle Delete
   const handleDelete = (id) => {
-    console.log(id)
     fetch(`https://infinite-coast-95375.herokuapp.com/orders/${id}`, {
       method: 'DELETE',
       headers: {
@@ -43,11 +37,9 @@ const OrderReview = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          alert('Deleted Successfully')
           const remaining = orders.filter((order) => order._id !== id)
           setOrders(remaining)
-        } else {
-          alert('not deleted')
+          alert('Deleted Successfully')
         }
       })
   }

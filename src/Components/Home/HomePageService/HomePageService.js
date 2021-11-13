@@ -27,7 +27,9 @@ const HomePageService = () => {
   //   })
   // }
   return (
-    <div>
+    <div
+      style={{ backgroundColor: 'rgb(214 228 255 / .15)', padding: '20px 0' }}
+    >
       <Container sx={{ py: 3 }}>
         <Typography
           variant="h2"
