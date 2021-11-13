@@ -1,10 +1,10 @@
 # Welcome to Baby Shop Online Store
 
-This project is used by Material UI [Website live link](https://baby-shop-4f049.web.app/).
+This project is used by Material UI, React, Nodejs, Express js, mongodb atlas [Website live link](https://baby-shop-4f049.web.app/).
 
 ## Project functionality
 
-<ul>
+<ol>
     <li>Product added option</li>
     <li>Dynamic products display</li>
     <li>Home page products showing 6 item</li>
@@ -17,7 +17,10 @@ This project is used by Material UI [Website live link](https://baby-shop-4f049.
     <li>Make Admin system</li>
     <li>Manage products showing after admin login.</li>
     <li>Admin access: admin@admin.com, 123456</li>
-</ul>
+</ol>
+
+Thanks, <br>
+MD Abdul Latif Sagor
 
 ### `yarn start`
 
