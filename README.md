@@ -4,7 +4,7 @@ This project is used by Material UI, React, Nodejs, Express js, mongodb atlas [W
 
 ## Project functionality
 
-<ol>
+<ul>
     <li>Product added option</li>
     <li>Dynamic products display</li>
     <li>Home page products showing 6 item</li>
@@ -17,10 +17,10 @@ This project is used by Material UI, React, Nodejs, Express js, mongodb atlas [W
     <li>Make Admin system</li>
     <li>Manage products showing after admin login.</li>
     <li>Admin access: admin@admin.com, 123456</li>
-</ol>
+</ul>
 
-Thanks, <br>
-MD Abdul Latif Sagor
+<b>Thanks, <br>
+MD Abdul Latif Sagor</b>
 
 ### `yarn start`
 
